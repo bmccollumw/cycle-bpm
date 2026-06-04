@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   const session = await getServerSession()
 
@@ -11,8 +11,10 @@ export async function GET(
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
+  const { id } = await context.params
+
   const res = await fetch(
-    `https://api.spotify.com/v1/playlists/${params.id}/tracks?limit=100`,
+    `https://api.spotify.com/v1/playlists/${id}/tracks?limit=100`,
     { headers: { Authorization: `Bearer ${session.accessToken}` } }
   )
 
