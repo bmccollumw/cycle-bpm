@@ -1,0 +1,159 @@
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #f8f7f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-dm-sans), sans-serif;
+  padding: 2rem 1.5rem;
+}
+
+/* ── Wordmark ── */
+.wordmark {
+  font-family: var(--font-dm-serif), serif;
+  font-size: clamp(2.8rem, 12vw, 5.5rem);
+  color: #111;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  text-align: center;
+}
+
+/* ── Tagline ── */
+.tagline {
+  font-weight: 300;
+  font-size: clamp(0.7rem, 3vw, 1rem);
+  color: #888;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 0.6rem;
+  opacity: 0;
+  transition: opacity 0.8s ease 0.3s;
+  text-align: center;
+}
+
+/* ── Divider ── */
+.divider {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, #ccc, transparent);
+  margin: 2rem 0;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.6s;
+}
+
+/* ── Notice ── */
+.notice {
+  width: 100%;
+  max-width: 340px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.7s ease 0.8s, transform 0.7s ease 0.8s;
+}
+
+.noticeBox {
+  border: 1px solid #e0ddd8;
+  border-radius: 16px;
+  padding: 1.25rem 1.25rem;
+  background: #fff;
+}
+
+.noticeLabel {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #bbb;
+  margin-bottom: 0.6rem;
+}
+
+.noticeText {
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.noticeText a {
+  color: #111;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+  transition: border-color 0.2s;
+}
+
+.noticeText a:hover {
+  border-color: #111;
+}
+
+/* ── Login button ── */
+.loginWrap {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 340px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.loginBtn {
+  width: 100%;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 1rem 2rem;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.loginBtn:hover {
+  background: #333;
+}
+
+.loginBtn:active {
+  transform: scale(0.98);
+  background: #000;
+}
+
+/* ── Footer ── */
+.footer {
+  position: fixed;
+  bottom: 1.5rem;
+  font-size: 0.7rem;
+  color: #ccc;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transition: opacity 0.6s ease 1.5s;
+  text-align: center;
+}
+
+/* ── Shared visible state ── */
+.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ── Tablet and up ── */
+@media (min-width: 640px) {
+  .loginBtn {
+    width: auto;
+    padding: 0.9rem 2.5rem;
+  }
+
+  .divider {
+    height: 48px;
+    margin: 2.5rem 0;
+  }
+}
