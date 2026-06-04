@@ -10,6 +10,7 @@ export default function Home() {
   const router = useRouter()
   const [visible, setVisible] = useState(false)
   const [showLogin, setShowLogin] = useState(false)
+  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     if (session) router.push('/dashboard')
@@ -20,6 +21,27 @@ export default function Home() {
     const t2 = setTimeout(() => setShowLogin(true), 1800)
     return () => { clearTimeout(t1); clearTimeout(t2) }
   }, [])
+
+  const handleContact = (e: React.MouseEvent) => {
+    // Try mailto first — if it fails, copy to clipboard
+    const mailto = 'bmccollumw@gmail.com'
+    try {
+      window.location.href = `mailto:${mailto}`
+      setTimeout(() => {
+        // If still on same page after 1s, mailto probably failed — copy instead
+        navigator.clipboard.writeText(mailto).then(() => {
+          setCopied(true)
+          setTimeout(() => setCopied(false), 2500)
+        })
+      }, 1000)
+    } catch {
+      navigator.clipboard.writeText(mailto).then(() => {
+        setCopied(true)
+        setTimeout(() => setCopied(false), 2500)
+      })
+    }
+    e.preventDefault()
+  }
 
   if (status === 'loading') return null
 
@@ -41,9 +63,16 @@ export default function Home() {
           <p className={styles.noticeText}>
             This app is currently in private beta. If you haven't been personally
             set up,{' '}
-            <a href="mailto:bmccollumw@gmail.com">contact the owner</a>{' '}
+            <a href="mailto:bmccollumw@gmail.com" onClick={handleContact}>
+              contact the owner
+            </a>{' '}
             to request access.
           </p>
+          {copied && (
+            <p className={styles.copied}>
+              Email copied to clipboard
+            </p>
+          )}
         </div>
       </div>
 

@@ -157,3 +157,17 @@
     margin: 2.5rem 0;
   }
 }
+
+/* ── Copied confirmation ── */
+.copied {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.75rem;
+  letter-spacing: 0.03em;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
